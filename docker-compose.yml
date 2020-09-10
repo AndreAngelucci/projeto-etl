@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: 'postgres:latest'
+    container_name: quero-educacao-database
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=caged_data
+      - POSTGRES_USER=quero
+      - POSTGRES_PASSWORD=educacao
+  app:
+    build: ./app
+    container_name: quero-educacao-app
+    tty: true
+    links:
+      - db
