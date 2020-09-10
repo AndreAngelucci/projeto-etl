@@ -45,12 +45,12 @@ def run():
         print('[+] Tratando dados coletados')
         data = transform(data)
     except Exception as err:
-        raise Exception('[-] Não foi possível tratar os dados' + str(err))
+        raise Exception('[-] Não foi possível tratar os dados: ' + str(err))
     try:
         print('[+] Gravando os dados tratados')
         load(data)
     except Exception as err:
-        print('[-] Não foi possível gravar no banco de dados' + str(err))
+        raise Exception('[-] Não foi possível gravar no banco de dados: ' + str(err))
 
 
 if __name__ == '__main__':
